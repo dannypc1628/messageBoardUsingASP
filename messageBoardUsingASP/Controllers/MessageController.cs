@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using messageBoardUsingASP.Mondels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,19 @@ namespace messageBoardUsingASP.Controllers
     {
         public IActionResult Board()
         {
+            MessageOperate operate = new MessageOperate();
+            ViewBag.dataList =  operate.getMessages();
             var response = View();
             return response;
+        }
+        public IActionResult addMessage(MessageModel data)
+        {
+            data.Time = DateTime.Now;
+
+            MessageOperate operate = new MessageOperate();
+            operate.addMessage(data);
+
+            return RedirectToAction("Board");
         }
     }
 }
