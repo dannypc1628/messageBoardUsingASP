@@ -14,7 +14,26 @@
     <h1>留言板</h1>
     <br />
     <div>
+        @foreach(var a in ViewBag.dataList)
+        {
+        <div>
+            <span>@a.Name</span>
+            <span>@a.Message</span>
+            <span>@a.Time</span>
+            <br />
+            <br />
+        </div>
+        }
+    </div>
 
+    <div>
+        <form action="Message/AddMessage">
+            <lable>名字</lable>
+            <input type="text" name="Name" />
+            <lable>內容</lable>
+            <input type="text" name="Message" />
+            <input type="submit" value="送出" />
+        </form>
     </div>
 </body>
 </html>

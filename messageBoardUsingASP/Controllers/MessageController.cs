@@ -12,16 +12,16 @@ namespace messageBoardUsingASP.Controllers
         public IActionResult Board()
         {
             MessageOperate operate = new MessageOperate();
-            ViewBag.dataList =  operate.getMessages();
+            ViewBag.dataList =  operate.GetMessages();
             var response = View();
             return response;
         }
-        public IActionResult addMessage(MessageModel data)
+        public IActionResult AddMessage(MessageModel data)
         {
             data.Time = DateTime.Now;
 
             MessageOperate operate = new MessageOperate();
-            operate.addMessage(data);
+            operate.AddMessage(data);
 
             return RedirectToAction("Board");
         }
