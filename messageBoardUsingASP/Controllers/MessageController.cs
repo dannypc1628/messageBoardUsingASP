@@ -1,9 +1,7 @@
-﻿using messageBoardUsingASP.Mondels;
+﻿using messageBoardUsingASP.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace messageBoardUsingASP.Controllers
 {
@@ -12,16 +10,16 @@ namespace messageBoardUsingASP.Controllers
         public IActionResult Board()
         {
             MessageOperate operate = new MessageOperate();
-            ViewBag.dataList =  operate.GetMessages();
+            ViewBag.dataList =  operate.SelectAllMessages();
             var response = View();
             return response;
         }
-        public IActionResult AddMessage(MessageModel data)
+        public IActionResult NewMessage(MessageModel data)
         {
             data.Time = DateTime.Now;
 
             MessageOperate operate = new MessageOperate();
-            operate.AddMessage(data);
+            operate.InsertMessage(data);
 
             return RedirectToAction("Board");
         }

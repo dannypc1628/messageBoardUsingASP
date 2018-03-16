@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace messageBoardUsingASP.Mondels
+namespace messageBoardUsingASP.Models
 {
     public class MessageOperate
     {
         string connectionString = "Data Source=DESKTOP-5O49JHS\\SQLEXPRESS;Initial Catalog=MVCtest;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public List<MessageModel> GetMessages()
+        public List<MessageModel> SelectAllMessages()
         {
             var con = new SqlConnection(connectionString);
             var cmd = con.CreateCommand();
@@ -18,7 +15,6 @@ namespace messageBoardUsingASP.Mondels
 
             List<MessageModel> dataList = new List<MessageModel>();
             
-
             con.Open();
             var reader = cmd.ExecuteReader();
 
@@ -38,11 +34,10 @@ namespace messageBoardUsingASP.Mondels
             
         }
 
-        public void AddMessage(MessageModel data)
+        public void InsertMessage(MessageModel data)
         {
             var con = new SqlConnection(connectionString);
             var cmd = con.CreateCommand();
-
             cmd.CommandText = "INSERT INTO [Table] ( Name, Message, Time) VALUES ( @thisName, @thisMessage, @thisTime)";
 
             cmd.Parameters.Add(new SqlParameter("@thisName", data.Name));

@@ -7,33 +7,54 @@
 
 <html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
-    <title>Board</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>留言板</title>
 </head>
-<body>
-    <h1>留言板</h1>
-    <br />
-    <div>
-        @foreach(var a in ViewBag.dataList)
-        {
-        <div>
-            <span>@a.Name</span>
-            <span>@a.Message</span>
-            <span>@a.Time</span>
-            <br />
-            <br />
-        </div>
-        }
-    </div>
+<body class="bg-light">
+    <div class="container ">
 
-    <div>
-        <form action="Message/AddMessage">
-            <lable>名字</lable>
-            <input type="text" name="Name" />
-            <lable>內容</lable>
-            <input type="text" name="Message" />
-            <input type="submit" value="送出" />
-        </form>
+        <div class="bg-primary rounded p-2 m-2">
+            <h1 class="text-white ">留言板</h1>
+        </div>
+        <div>
+            @foreach (var a in ViewBag.dataList)
+             {
+                <div class="p-3 m-2 bg-white border rounded ">
+                    <span class="font-weight-bold">@a.Name</span><span class="float-right">留言時間：@a.Time</span>
+                    <br />
+                    <span>@a.Message</span>
+
+                </div>
+             }
+        </div>
+
+        <div class="card  m-2">
+            <div  class="card-body">
+            <h3>留言</h3>
+            <form action="./Message/NewMessage">
+                <lable class="">名字</lable>
+                <input type="text" name="Name" class="form-control" />
+                <lable>內容</lable>
+                <input type="text" name="Message" class="form-control" />
+                <input type="submit" value="送出"  class="btn btn-primary mt-2"/>
+            </form>
+                </div>
+        </div>
+
+        <hr>
+        <div>
+            <spn>劉長庚 &nbsp; 天主教輔仁大學資訊工程所</spn>
+            <div class="float-right">
+                <a href="https://www.facebook.com/dannyliu.me/">fb:長庚的作業簿</a>
+                &nbsp; &nbsp;
+                <a href="https://github.com/dannypc1628/messageBoardUsingASP/tree/master/messageBoardUsingASP">程式碼:github</a>
+            </div>
+        </div>
+        <br>    
+
     </div>
 </body>
 </html>
