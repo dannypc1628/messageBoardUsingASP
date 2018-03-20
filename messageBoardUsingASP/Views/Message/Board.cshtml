@@ -19,29 +19,32 @@
         <div class="bg-primary rounded p-2 m-2">
             <h1 class="text-white ">留言板</h1>
         </div>
+
         <div>
+            @*跑迴圈把ViewBag.dataList內的留言撈出來*@
             @foreach (var a in ViewBag.dataList)
-             {
+            {
                 <div class="p-3 m-2 bg-white border rounded ">
                     <span class="font-weight-bold">@a.Name</span><span class="float-right">留言時間：@a.Time</span>
                     <br />
                     <span>@a.Message</span>
-
                 </div>
-             }
+            }
         </div>
 
         <div class="card  m-2">
-            <div  class="card-body">
-            <h3>留言</h3>
-            <form action="./Message/NewMessage">
-                <lable class="">名字</lable>
-                <input type="text" name="Name" class="form-control" />
-                <lable>內容</lable>
-                <input type="text" name="Message" class="form-control" />
-                <input type="submit" value="送出"  class="btn btn-primary mt-2"/>
-            </form>
-                </div>
+            <div class="card-body">
+                <h3>留言</h3>
+
+                <!--將欲新增的留言傳給Message這個控制器中的 NewMessage這個事件-->
+                <form action="./Message/NewMessage">
+                    <lable class="">名字</lable>
+                    <input type="text" name="Name" class="form-control" />
+                    <lable>內容</lable>
+                    <input type="text" name="Message" class="form-control" />
+                    <input type="submit" value="送出" class="btn btn-primary mt-2" />
+                </form>
+            </div>
         </div>
 
         <hr>
@@ -53,8 +56,17 @@
                 <a href="https://github.com/dannypc1628/messageBoardUsingASP/tree/master/messageBoardUsingASP">程式碼:github</a>
             </div>
         </div>
-        <br>    
-
+        <br>
     </div>
+    <!-- 使用Google Analytics紀錄瀏覽人次 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-75610329-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-75610329-3');
+    </script>
+
 </body>
 </html>
